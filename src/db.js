@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '123456',
+    password: 'root',
     database: 'pizzaria',
 });//PREENCHER DE ACORDO COM O SEU BANCO DE DADOS
 

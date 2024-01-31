@@ -108,6 +108,13 @@ exports.atualizarCliente = (req, res) => {
     return;
   }
 
+  bcrypt.hash(senha, 10, (err, hash) => {
+    if (err) {
+      console.error('Erro ao criptografar a senha:', err);
+      res.status(500).json({ error: 'Erro interno do servidor' });
+      return;
+    }
+
   const clienteAtualizado = {
     nome,
     endereco,
@@ -116,6 +123,7 @@ exports.atualizarCliente = (req, res) => {
     cep,
     telefone,
     email,
+    senha: hash
   };
 
   db.query('UPDATE cliente SET ? WHERE cpf = ?', [clienteAtualizado, cpf], (err, result) => {
@@ -126,7 +134,8 @@ exports.atualizarCliente = (req, res) => {
     }
     res.json({ message: 'Cliente atualizado com sucesso' });
   });
-}
+})
+};
 
 
 // Deletar um cliente
