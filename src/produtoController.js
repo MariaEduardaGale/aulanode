@@ -47,7 +47,7 @@ exports.buscarProdutoNome = (req, res) => {
     const { nome_produto } = req.params; // req.params acessa os parametros
 
     //LIKE com o operador % usado para buscar produtos cujo nome começa com o prefixo especificado na URL.
-    db.query('SELECT * FROM produto WHERE nome_produto LIKE ?', [`${nome_produto}%`], (err, result) => {
+    db.query('SELECT * FROM produto WHERE nome_produto LIKE ?', [`%${nome_produto}%`], (err, result) => {
       if (err) {
         console.error('Erro ao buscar produto:', err);
         res.status(500).json({ error: 'Erro interno do servidor' });
