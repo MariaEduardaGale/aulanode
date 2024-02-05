@@ -89,14 +89,14 @@ exports.atualizarProduto = (req, res) => {
   const { id } = req.params;
   const { nome_produto, descricao, valor, imagem } = req.body;
 
-  const { error } = produtoSchema.validate({ id, nome_produto, descricao, valor, imagem });
+  const { error } = produtoSchema.validate({  nome_produto, descricao, valor, imagem });
 
   if (error) {
     res.status(400).json({ error: 'Dados de produto inválidos' });
     return;
   }
 
-  const produtoAtualizado = { id, nome_produto, descricao, valor, imagem };
+  const produtoAtualizado = { nome_produto, descricao, valor, imagem };
 
   db.query('UPDATE produto SET ? WHERE id = ?', [produtoAtualizado, id], (err, result) => {
     if (err) {

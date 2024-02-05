@@ -152,3 +152,4 @@ exports.deletarCliente = (req, res) => {
     res.json({ message: 'Cliente deletado com sucesso' });
   });
 };
+
