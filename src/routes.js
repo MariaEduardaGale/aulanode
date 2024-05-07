@@ -46,9 +46,9 @@ router.delete('/clientes/:cpf', loginController.autenticarToken, clienteControll
 router.get('/produtos', produtoController.listarProdutos);
 router.get('/produtos/:id', produtoController.buscarProdutoId);
 router.get('/produtos/nome/:nome_produto', produtoController.buscarProdutoNome);
-router.post('/produtos', loginController.autenticarToken, produtoController.adicionarProduto);
-router.patch('/produtos/:id', loginController.autenticarToken, produtoController.atualizarProduto);
-router.delete('/produtos/:id', loginController.autenticarToken, produtoController.deletarProduto);
+router.post('/produtos',  produtoController.adicionarProduto);
+router.patch('/produtos/:id', produtoController.atualizarProduto);
+router.delete('/produtos/:id', produtoController.deletarProduto);
 
 
 // Rotas para pedido
